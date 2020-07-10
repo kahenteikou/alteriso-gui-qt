@@ -24,9 +24,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
-set(TS_FILES alteriso-gui-qt_ja_JP.ts)
 
 if(ANDROID)
   add_library(alteriso-gui-qt SHARED
@@ -36,6 +35,8 @@ if(ANDROID)
     mainwindow.ui
     main_mainwindow_interface.h
     main_mainwindow_interface.cpp
+    build_setting.cpp
+    build_setting.h
     ${TS_FILES}
   )
 else()
@@ -46,10 +47,11 @@ else()
     mainwindow.ui
     main_mainwindow_interface.h
     main_mainwindow_interface.cpp
+    main.cpp
+    build_setting.cpp
+    build_setting.h
     ${TS_FILES}
   )
 endif()
 
 target_link_libraries(alteriso-gui-qt PRIVATE Qt5::Widgets)
-
-qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})

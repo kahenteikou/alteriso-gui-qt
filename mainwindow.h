@@ -2,8 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/utsname.h>
 #include "main_mainwindow_interface.h"
-
+#include "build_setting.h"
+#include <QDir>
+#include <iostream>
+#include <QTextStream>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -19,5 +26,8 @@ public:
 private:
     Ui::MainWindow *ui;
     main_mainwindow_interface *m_interface;
+    struct utsname uname_strkun;
+    build_setting bskun;
+    QStringList get_kernel_list();
 };
 #endif // MAINWINDOW_H
