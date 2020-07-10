@@ -1,6 +1,6 @@
 #include "main_mainwindow_interface.h"
 
-main_mainwindow_interface::main_mainwindow_interface(main_mainwindow_interface m_interface,QObject *parent) : QObject(parent)
+main_mainwindow_interface::main_mainwindow_interface(QObject *parent) : QObject(parent)
 {
 
 }
