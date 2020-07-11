@@ -11,6 +11,7 @@
 #include <QDir>
 #include <iostream>
 #include <QTextStream>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -31,5 +32,6 @@ private:
     QStringList get_kernel_list();
     QStringList get_lang_list();
     QStringList get_list_file(QFile*);
+    QStringList get_channel_list();
 };
 #endif // MAINWINDOW_H

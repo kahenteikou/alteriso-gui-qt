@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(main_mainwindow_interface *m_interface2,QWidget *parent)
@@ -24,6 +24,9 @@ MainWindow::MainWindow(main_mainwindow_interface *m_interface2,QWidget *parent)
         ui->Lang_comboBox->setEnabled(false);
         ui->Language_label->setEnabled(false);
     }
+    QStringList channel_listkun=get_channel_list();
+    bskun.set_channel_list(channel_listkun);
+    ui->Channel_ComboBox->addItems(channel_listkun);
 }
 
 MainWindow::~MainWindow()
@@ -61,4 +64,24 @@ QStringList MainWindow::get_list_file(QFile *fkun){
         }
     }
     return return_strlist;
+}
+QStringList MainWindow::get_channel_list(){
+    QDir parent_dir_alter(m_interface->get_alteriso_Dir());
+    QDir channels_dir(QString(parent_dir_alter.path() + "/channels"));
+    QStringList channels_dirs=channels_dir.entryList(QDir::Dirs);
+    QStringList result_channel_lists;
+    for(QString channel_dir_path:channels_dirs){
+        if(channel_dir_path != "." && channel_dir_path != ".." && channel_dir_path != "share"){
+
+            QDir ch_dirkun(QString(channels_dir.path() + "/" + channel_dir_path));
+            if(!ch_dirkun.isEmpty()){
+                if(channel_dir_path.endsWith(".add")){
+                    result_channel_lists.append(channel_dir_path.mid(0,channel_dir_path.length() -4));
+                }else{
+                    result_channel_lists.append(channel_dir_path);
+                }
+            }
+        }
+    }
+    return result_channel_lists;
 }
