@@ -5,16 +5,20 @@ MainWindow::MainWindow(main_mainwindow_interface *m_interface2,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
+
     m_interface=m_interface2;
 
     if(uname(&uname_strkun)!=0){
         return;
     }
     bskun.set_archtecture(uname_strkun.machine);
+    //kernel
     bskun.set_kernel_list(get_kernel_list());
     QStringList kernel_listkun=bskun.get_kernel_list();
     ui->kernel_comboBox->addItems(kernel_listkun);
+    //lang
     if(m_interface->get_alteriso3()){
         ui->Enable_japanese_build->setEnabled(false);
         bskun.set_lang_list(get_lang_list());
@@ -24,9 +28,17 @@ MainWindow::MainWindow(main_mainwindow_interface *m_interface2,QWidget *parent)
         ui->Lang_comboBox->setEnabled(false);
         ui->Language_label->setEnabled(false);
     }
+    //channel
     QStringList channel_listkun=get_channel_list();
     bskun.set_channel_list(channel_listkun);
     ui->Channel_ComboBox->addItems(channel_listkun);
+    //comp
+    QStringList comp_list({"zstd","lzma","lzo","lz4","xz","gzip"});
+    ui->Comp_type_combobox->addItems(comp_list);
+    //log
+    QTextCursor textCursor = ui->LogTextEdit->textCursor();
+    textCursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor,1);
+    ui->LogTextEdit->setTextCursor(textCursor);
 }
 
 MainWindow::~MainWindow()
@@ -84,4 +96,43 @@ QStringList MainWindow::get_channel_list(){
         }
     }
     return result_channel_lists;
+}
+
+void MainWindow::on_Comp_type_combobox_currentIndexChanged(const QString &arg1)
+{
+    bskun.set_comp_type(arg1);
+}
+
+void MainWindow::on_kernel_comboBox_currentIndexChanged(const QString &arg1)
+{
+    bskun.set_kernel(arg1);
+}
+
+void MainWindow::on_Lang_comboBox_currentIndexChanged(const QString &arg1)
+{
+    bskun.set_lang(arg1);
+}
+
+void MainWindow::on_Channel_ComboBox_currentIndexChanged(const QString &arg1)
+{
+    bskun.set_channel(arg1);
+}
+
+void MainWindow::on_UserName_Lineedit_textEdited(const QString &arg1)
+{
+    bskun.set_user_name(arg1);
+}
+
+void MainWindow::on_Password_lineedit_textEdited(const QString &arg1)
+{
+    bskun.set_pass_word(arg1);
+}
+
+void MainWindow::on_show_passwd_button_toggled(bool checked)
+{
+    if(checked){
+        ui->Password_lineedit->setEchoMode(QLineEdit::Normal);
+    }else{
+        ui->Password_lineedit->setEchoMode(QLineEdit::Password);
+    }
 }

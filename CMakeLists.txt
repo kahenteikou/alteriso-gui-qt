@@ -37,6 +37,8 @@ if(ANDROID)
     main_mainwindow_interface.cpp
     build_setting.cpp
     build_setting.h
+    log_manager.h
+    log_manager.cpp
     ${TS_FILES}
   )
 else()
@@ -50,6 +52,8 @@ else()
     main.cpp
     build_setting.cpp
     build_setting.h
+    log_manager.h
+    log_manager.cpp
     ${TS_FILES}
   )
 endif()

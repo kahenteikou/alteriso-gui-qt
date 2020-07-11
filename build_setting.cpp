@@ -29,4 +29,43 @@ QStringList build_setting::get_channel_list(){
 void build_setting::set_channel_list(QStringList lkun){
     channel_list=lkun;
 }
+QString build_setting::get_comp_type(){
+    return comp_type;
+}
+void build_setting::set_comp_type(QString cpkun){
+    comp_type=cpkun;
+}
+QString build_setting::get_channel(){
+    return channel;
+}
+void build_setting::set_channel(QString chkun){
+    channel=chkun;
+}
+
+QString build_setting::get_lang(){
+    return lang;
+}
+void build_setting::set_lang(QString cpkun){
+    lang=cpkun;
+}
+
+QString build_setting::get_kernel(){
+    return kernel;
+}
+void build_setting::set_kernel(QString cpkun){
+    kernel=cpkun;
+}
+QString build_setting::get_pass_word(){
+    return password_kun;
+}
+void build_setting::set_pass_word(QString p){
+    password_kun=p;
+}
+QString build_setting::get_user_name(){
+    return user_name;
+}
+void build_setting::set_user_name(QString un){
+    user_name=un;
+}
+
 
