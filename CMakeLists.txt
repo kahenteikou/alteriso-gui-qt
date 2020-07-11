@@ -25,7 +25,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Boost REQUIRED COMPONENTS system )
 find_package(Threads)
 
 if(ANDROID)
@@ -59,4 +58,4 @@ else()
   )
 endif()
 
-target_link_libraries(alteriso-gui-qt PRIVATE Qt5::Widgets ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} )
+target_link_libraries(alteriso-gui-qt PRIVATE Qt5::Widgets ${CMAKE_THREAD_LIBS_INIT} )

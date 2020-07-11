@@ -11,7 +11,6 @@
 #include <QDir>
 #include <iostream>
 #include <QTextStream>
-#include <boost/process.hpp>
 #include "log_manager.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,7 +29,6 @@ private:
     main_mainwindow_interface *m_interface;
     struct utsname uname_strkun;
     build_setting bskun;
-    boost::process::opstream output_stream;
     QStringList get_kernel_list();
     QStringList get_lang_list();
     QStringList get_list_file(QFile*);
