@@ -12,9 +12,15 @@ public:
     QString get_archtecture();
     void set_kernel_list(QStringList);
     QStringList get_kernel_list();
+    void set_channel_list(QStringList);
+    QStringList get_channel_list();
+    void set_lang_list(QStringList);
+    QStringList get_lang_list();
 private:
     QString archtecture;
     QStringList kernel_list;
+    QStringList lang_list;
+    QStringList channel_list;
 signals:
 
 };

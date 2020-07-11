@@ -11,13 +11,13 @@ int main(int argc, char *argv[])
     parser.setApplicationDescription("alteriso gui wrapper");
     parser.addHelpOption();
     parser.addVersionOption();
-    QCommandLineOption alteriso_3("alteriso3","enable alteriso 3");
+    QCommandLineOption alteriso_2("alteriso2","enable alteriso 2");
     QDir curDir(QDir::current());
     QCommandLineOption alteriso_proj_path("alteriso_path","alteriso path [Default current directory]","alteriso dir",curDir.absolutePath());
-    parser.addOptions({alteriso_3,alteriso_proj_path});
+    parser.addOptions({alteriso_2,alteriso_proj_path});
     parser.process(a);
     main_mainwindow_interface m_interface;
-    m_interface.set_alteriso3(parser.isSet(alteriso_3));
+    m_interface.set_alteriso3(!parser.isSet(alteriso_2));
     m_interface.set_alteriso_Dir(parser.value(alteriso_proj_path));
     MainWindow w(&m_interface);
     w.show();

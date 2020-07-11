@@ -29,5 +29,7 @@ private:
     struct utsname uname_strkun;
     build_setting bskun;
     QStringList get_kernel_list();
+    QStringList get_lang_list();
+    QStringList get_list_file(QFile*);
 };
 #endif // MAINWINDOW_H
