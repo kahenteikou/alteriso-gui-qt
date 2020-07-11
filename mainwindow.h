@@ -11,7 +11,7 @@
 #include <QDir>
 #include <iostream>
 #include <QTextStream>
-#include <QProcess>
+#include <boost/process.hpp>
 #include "log_manager.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,11 +30,11 @@ private:
     main_mainwindow_interface *m_interface;
     struct utsname uname_strkun;
     build_setting bskun;
+    boost::process::opstream output_stream;
     QStringList get_kernel_list();
     QStringList get_lang_list();
     QStringList get_list_file(QFile*);
     QStringList get_channel_list();
-    QProcess build_qp;
 
 private slots:
     void on_Comp_type_combobox_currentIndexChanged(const QString &arg1);
@@ -44,7 +44,6 @@ private slots:
     void on_UserName_Lineedit_textEdited(const QString &arg1);
     void on_Password_lineedit_textEdited(const QString &arg1);
     void on_show_passwd_button_toggled(bool checked);
-    void on_textEdit_textChanged();
     void on_LogTextEdit_textChanged();
 };
 #endif // MAINWINDOW_H

@@ -136,3 +136,8 @@ void MainWindow::on_show_passwd_button_toggled(bool checked)
         ui->Password_lineedit->setEchoMode(QLineEdit::Password);
     }
 }
+
+void MainWindow::on_LogTextEdit_textChanged()
+{
+
+}
